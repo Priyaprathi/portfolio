@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bf95426b8d.js" crossorigin="anonymous"></script>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'poppins', sans-serif;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        #more {
+            display: none;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: white;
+            color: black;
+        }
+
+
+        #header {
+            width: 100%;
+            height: 100vh;
+            background: url(images/image.jpg) fixed;
+            background-size: cover;
+            background-position: center;
+
+        }
+
+        .container {
+            padding: 10px 7%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 280px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 2s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+
+        }
+
+        .header-text {
+            margin-top: 14.5%;
+            /* margin-left: 11px; */
+            font-size: 25px;
+        }
+
+        .header-text h1 {
+            font-size: 50px;
+            margin-top: 25px;
+        }
+
+        .header-text h1 span {
+            color: #ff004f;
+        }
+
+        /*--------------About------------ */
+        #about {
+            padding: 80px 0;
+            color: ababab;
+        }
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .about-col-1 {
+
+
+            flex-basis: 30%;
+        }
+
+        .about-col-1 img {
+            width: 100%;
+            border-radius: 13px;
+        }
+
+        .about-col-2 {
+            flex-basis: 61%;
+
+        }
+
+        .sub-title {
+            font-size: 50px;
+            font-weight: 600;
+
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+
+        }
+
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-links.active-link::after {
+            width: 50%;
+        }
+
+        .tab-contents ul li {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .tab-contents ul li span {
+            color: #ff004f;
+            font-size: 14px;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        /*--------------services------------ */
+        #services {
+            padding: 20px 0 30px 0;
+        }
+
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .services-list div {
+            background: #dbd8d8;
+            padding: 40px;
+            font-size: 13px;
+            font-weight: 300;
+            border-radius: 10px;
+            transition: back-ground 0.5s, transform 0.5s;
+        }
+
+        .services-list div i {
+            font-size: 50px;
+            margin-bottom: 25px;
+        }
+
+        .services-list div h2 {
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 14px;
+        }
+
+        .services-list div a {
+            text-decoration: none;
+            color: black;
+            font-size: 12px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .services-list div:hover {
+            background: #ff004f;
+            transform: translateY(-10px);
+
+            color: white;
+        }
+
+        /* -------------------portfolio-------------------  */
+
+        #portfolio {
+            padding: 50px 0;
+        }
+
+        .work-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+
+        }
+
+        .work {
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            /* z-index: -1; */
+        }
+
+        .work img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .layer {
+            width: 100%;
+            height: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0, 30px;
+            text-align: center;
+            font-size: 14px;
+            transition: height 0.5s;
+        }
+
+        .layer h3 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: wheat;
+        }
+
+        .layer ul li {
+            font-weight: 400;
+            color: wheat;
+        }
+
+        .layer a {
+            margin-top: 20px;
+            columns: #ff004f;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: black;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .work:hover img {
+            transform: scale(1.1);
+        }
+
+        .work:hover .layer {
+            height: 100%;
+        }
+
+        .btn {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 6px;
+            color: black;
+            text-decoration: none;
+            font-weight: 590;
+            transition: background 0.5s;
+        }
+
+        .btn:hover {
+            background: #ff004f;
+
+        }
+
+        /* -------------------contact-------------------  */
+        .contact-left {
+            flex-basis: 35%;
+        }
+
+        .contact-left a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .contact-right {
+            flex-basis: 60%;
+        }
+
+        .contact-left p i {
+            color: #ff004f;
+            margin: 15px 0;
+            font-size: 25px;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #000000;
+            display: inline-block;
+            transition: transform 0.5s;
+        }
+
+        .social-icons a:hover {
+            color: #ff004f;
+            transform: translateY(-5px);
+        }
+
+        .btn.btn2 {
+            display: inline-block;
+            background: #ff004f;
+        }
+
+        .contact-right form {
+            width: 100%;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            border: 0;
+            outline: none;
+            background: rgb(221, 221, 221);
+            padding: 15px;
+            margin: 15px 0;
+            color: black;
+            font-size: 18px;
+            border-radius: 6px;
+        }
+
+        form .btn2 {
+            padding: 14px 60px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            padding: 25px 0;
+            background: #dbd8d8;
+            font-weight: 300;
+            margin-top: 20px;
+        }
+
+        .copyright i {
+            color: #ff004f;
+        }
+
+        /* ----------------Css for small screen------------------ */
+
+        nav .fas {
+            display: none;
+        }
+
+        @media only screen and (max-width:600px) {
+            .header {
+                background-image: url(images/background.png);
+            }
+
+            .header-text {
+                margin-top: 100%;
+                font-size: 16px;
+
+            }
+
+            .header-text h1 {
+                font-size: 13px;
+            }
+
+            nav .fas {
+                display: block;
+                font-size: 35px;
+            }
+
+            nav ul {
+                background: #ff004f;
+                position: fixed;
+                top: 0;
+                right: -200px;
+                width: 200px;
+                height: 100vh;
+                padding-top: 50px;
+                z-index: 2;
+                transition: right 0.5s;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 25px;
+            }
+
+            nav ul .fas {
+                position: absolute;
+                top: 25px;
+                left: 25px;
+                cursor: pointer;
+            }
+
+            .sub-title {
+                font-size: 40px;
+            }
+
+            .about-col-1,
+            .about-col-2 {
+                flex-basis: 100%;
+            }
+
+            .about-col-1 {
+                margin-bottom: 25px;
+            }
+
+            .about-col-2 {
+                font-size: 14px7;
+            }
+
+            .tab-links {
+                font-size: 16px;
+                margin-right: 20px;
+            }
+
+            .contact-left,
+            .contact-right {
+                flex-basis: 100%;
+            }
+
+            .tab-contents.active-tab span {
+                margin: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        }
+
+        #span {
+            color: #1e3b19;
+            margin-top: -30px;
+            display: block;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" alt="img" class="logo">
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#responsibilities">Responsibilities</a></li>
+                    <li><a href="#achievements">Achievements</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+            <div class="header-text">
+                <p>Retail Operations Manager</p>
+                <h1>Hi, I'm <span>Prabhakar Prathi</span> <br> From Hyderabad</h1>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------about------------------- -->
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1">
+                    <img src="images/santu.jpeg" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">About Me</h1>
+                    <p>Dedicated and detail-oriented Retail Specialist with 5+
+                        years of total experience and 3+ years of Luxury Retail
+                        Experience. Seeking a position in the area of Department
+                        / Store Manager in one of the best organizations where I
+                        can prove as well as empower my skills and capabilities
+                        so as to bring about corporate as well as individual
+                        growth.</p>
+
+                    <div class="tab-titles">
+                        <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                        <p class="tab-links" onclick="opentab('education')">Education</p>
+
+                    </div>
+                    <div class="tab-contents active-tab" id="skills">
+                        <ul>
+                            <li><span>Hard Skill : </span> <br>
+                                Sales and Marketing Tools <br>
+                                Market Survey and Analysis <br>
+                                Visual Merchandising <br>
+                                People Management <br>
+                                Styling & photography <br>
+                                Inventory Management <br>
+                            </li>
+
+                        </ul>
+                        <ul>
+                            <li><span>Soft Skill : </span> <br>
+                                Observation<br>
+                                Decision making <br>
+                                Communication<br>
+                                Multi-tasking <br>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="experience">
+                        <ul>
+                            <li><span>Nov 2022 - Current</span><br>
+                                Store Manager<br>
+                                Indie Jewels - GIVA <br>
+                                Location : L&T Mall, Musarambagh and Dilsukhnagar High Street
+                            </li>
+
+                            <li><span>Dec 2020 - Nov 2022</span><br>Assisstant Manager<br>
+                                Bluestone Jewellery <br>
+                                Location : Chandanagar & Kukatpally <br>
+                            </li>
+                            <li><span>Oct 2018 - Nov 2020</span><br>Asst. Department Manager<br>
+                                LifeStyle International PVT LTD(Max Retail Division) <br>
+                                Store & location: Stand Alone store, Chandhanagar, Himayathnagar
+                                & Dilsukhnagar
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education">
+                        <ul>
+                            <li><span>2016-2019</span><br>Bsc from Andhra University, Vishakhapatnam</li>
+                            <li><span>2014-2016</span><br>Intermediate from SPS College, Palasa</li>
+                            <li><span>2013-2014</span><br>10th CBSE from Harobino Vidya Bhavan, Berhampur</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- -------------------services------------------- -->
+    <div id="services">
+        <div class="container">
+            <h1 class="sub-title">Key Responsibilities</h1>
+
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-people-roof"></i>
+                    <h2>At GIVA</h2>
+                    <ul>
+                        <li style="list-style: disc;"> Monitor the financial performance. Trained team members in
+                            successful strategies to meet operational and sales targets.</li>
+                        <li style="list-style: disc;">Strengthened merchandising and promotional strategies to drive
+                            customer engagement and boost sales.</li>
+                        <li style="list-style: disc;">Oversaw employee performance, corrected problems and
+                            increased efficiency to maintain productivity targets.
+                        </li>
+                        <li style="list-style: disc;">Liaised with sales, marketing and management teams to develop
+                            solutions and accomplish shared objectives.
+                        </li>
+                        <li style="list-style: disc;">Coordinated weekly conferences with store associates to
+                            communicate sales and customer service goals.
+                        </li>
+
+                        <li style="list-style: disc;">Coached employees and trained on methods for handling various
+                            aspects of sales, complicated issues and difficult customers.</li>
+
+                    </ul>
+                    <!-- <a href="#">Read More</a> -->
+                </div>
+                <div>
+                    <i class="fa-solid fa-bars-progress"></i>
+                    <h2>At Bluestone</h2>
+                    <ul>
+                        <li style="list-style-type: disc;">Multiplied earnings through sales goal achievement.</li>
+                        <li style="list-style-type: disc;">customer service improvements and commitment to team
+                            objectives</li>
+                        <li style="list-style-type: disc;">Managed all aspects of store operations, including
+                            organization, maintenance and purchasing functions.</li>
+                        <li style="list-style-type: disc;">Optimized store display and appearance by strategic
+                            merchandising.</li>
+                        <li style="list-style-type: disc;">Provided excellent customer service, promoting membership
+                            loyaltyand increasing customer satisfaction rates.</li>
+                        <li style="list-style-type: disc;">Submitted reports to senior management to aid in business
+                            decision making and planning. </li>
+                        <li style="list-style-type: disc;">Generated repeat business by developing and maintaining
+                            strong
+                            team of 3 employees devoted to customer service.</li>
+                    </ul>
+
+                    <!-- <a href="#">Learn more</a> -->
+                </div>
+                <div>
+                    <i class="fa-solid fa-list-check"></i>
+                    <h2>Max Fashion</h2>
+                    <ul>
+                        <li style="list-style-type: disc;">Responsible for department's stock and people management.
+                        </li>
+                        <li style="list-style-type: disc;">Target achievement, Analyzing deeply in department,
+                            understanding Fast and slow moving products with the usage of
+                            Visual merchandising will do changes on floor and improve sales.</li>
+                        <li style="list-style-type: disc;">Target Vs Achievement Goals for the Department.</li>
+                        <li style="list-style-type: disc;">Customer centric Service for betterment of Sales and Customer
+                            feedback.</li>
+                        <li style="list-style-type: disc;">Creating appealing and eye-catching visual displays that lead
+                            the customer through the entire store.</li>
+                        <li style="list-style-type: disc;">Producing window displays, signs, interior displays, floor
+                            plans and special promotions displays.</li>
+                        <li style="list-style-type: disc;">Defining, designing and implementing a creative visual
+                            merchandising strategy.</li>
+                    </ul>
+
+                    <!-- <a href="#">Learn more</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- -------------------portfolio------------------- -->
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="sub-title">Achievements</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work1.jpg" height="400px" alt="">
+                    <div class="layer">
+                        <h3>GIVA</h3>
+                        <ul>
+                            <li style="list-style-type: disc;">Target acievement of 115% consistently <br> every month
+                            </li>
+                            <br>
+                            <li style="list-style-type: disc;">Scored 92.5% and topper among pan india <br> for store
+                                visual merchandiser .</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work2.jpg" height="400px" alt="">
+                    <div class="layer">
+                        <h3>Bluestone</h3>
+                        <ul>
+                            <li style="list-style-type: disc;">Did 2 Successful store Grand Launch at <br> Bluestone in
+                                the span of 5months.</li>
+                            <br>
+                            <li style="list-style-type: disc;">Got Appreciation from CEO of the Company <br> as
+                                biggest opening Sale for Any store in <br> Pan India in
+                                Bluestone.</li>
+                        </ul>
+                        <!-- <a href="https://www.bluestone.com/"><i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work4.jpg" height="400px" alt="">
+                    <div class="layer">
+                        <h3>Max Fashion</h3>
+
+                        <ul>
+                            <li style="list-style-type: disc;">Pan India rank 1. Continuously two times <br>
+                                for the
+                                Planogram Display.</li>
+                            <br>
+                            <li style="list-style-type: disc;">Top in the TS region for DM talent <br> segmentation
+                                examination.</li>
+                        </ul>
+                        <!-- <a
+                            href="https://stores.maxfashion.in/max-chandanagar-shopping-centre-chandanagar-hyderabad-105579/Home"><i
+                                class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a> -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- <a href="#" class="btn">See More</a> -->
+        </div>
+    </div>
+
+    <!---------------------contact-------------------  -->
+    <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <i class="fa-solid fa-mail-plane"></i><a
+                        href="mailto:Prathiprabhakar22@gmail.com">Prathiprabhakar22@gmail.com</a>
+                    <br>
+
+                    <i class="fa-solid fa-phone-square-alt"></i><a href="tel:+91 9110382150">+91 9110382150</a>
+
+                    <!-- <p><i class="fa-solid fa-paper-plane"></i><i class="fa-solid fa-paper-plane"></i>Prathiprabhakar22@gmail.com</p> -->
+                    <!-- <p><i class="fa-solid fa-phone-square-alt"></i>+91 9110382150</p> -->
+                    <div class="social-icons">
+                        <!-- <a href="https://wa.me/9110382150"><i class="fa-brands fa-whatsapp"></i></a> -->
+                        <a href="https://wa.me/11234567890?text=Hello%20there!" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                        <a
+                            href="https://www.linkedin.com/in/prathi-prabhakar-rao-51370815b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i
+                                class="fa-brands fa-linkedin"></i></a>
+                        <!-- <a href="#"><i class="fa-brands fa-square-twitter"></i></a> -->
+                    </div>
+                    <a href="images/Prabhakar Prathi.pdf" download class="btn btn2">Download CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Your Name" required>
+                        <input type="email" name="Email" placeholder="Your Email" required>
+                        <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Copyright &copy; Prabhakar. Made by Santosh</p>
+        </div>
+    </div>
+
+
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab")
+        }
+
+    </script>
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbypzCwqs0Yxh89dLIwMONdavDmpaa7CHzcjb_JC5dhmrTreAxeyqGaAqaViEzMb1jox/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg");
+        form.addEventListener('submit', e => {
+            e.preventDefault()
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    msg.innerHTML = "Message sent successfully"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                })
+                .catch(error => console.error('Error!', error.message))
+        })
+    </script>
+</body>
+
+</html>
